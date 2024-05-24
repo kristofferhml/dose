@@ -10,7 +10,7 @@ PIN_IN1 = int(os.getenv('PIN_IN1',22))
 PIN_IN2 = int(os.getenv('PIN_IN2',23))
 PIN_EN = int(os.getenv('PIN_EN',23))
 
-TARGET_PH = int(os.getenv('TARGET_PH', 5.5))
+TARGET_PH = float(os.getenv('TARGET_PH', 5.8))
 
 DOSE_INTERVAL = int(os.getenv('DOSE_INTERVAL', 5))
 
