@@ -6,10 +6,8 @@ from std_msgs.msg import String
 import time
 import datetime
 
-DAY = 'day'
-NIGHT = 'night'
 PIN_IN1 = int(os.getenv('PIN_IN1',22))
-PIN_IN2 = int(os.getenv('PIN_IN1',23))
+PIN_IN2 = int(os.getenv('PIN_IN2',23))
 PIN_EN = int(os.getenv('PIN_EN',23))
 
 TARGET_PH = int(os.getenv('TARGET_PH', 5.5))
