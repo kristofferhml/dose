@@ -14,7 +14,7 @@ TARGET_PH = float(os.getenv('TARGET_PH', 5.8))
 
 DOSE_INTERVAL = int(os.getenv('DOSE_INTERVAL', 5))
 
-DOSE_MIN_MINUTE_DIFF = int(os.getenv('DOSE_MIN_MINUTE_DIFF', 5.5))
+DOSE_MIN_MINUTE_DIFF = int(os.getenv('DOSE_MIN_MINUTE_DIFF', 60))
 
 class Dose(Node):
 
