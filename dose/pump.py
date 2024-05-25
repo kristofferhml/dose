@@ -29,7 +29,7 @@ class Pump():
         if self.current == GPIO.HIGH:
             return
         
-        GPIO.output(self.CONTROL_PIN, GPIO.HIGH)
+        GPIO.output(self.control_pin, GPIO.HIGH)
         self.p.ChangeDutyCycle(0)
         self.current = GPIO.HIGH
        
