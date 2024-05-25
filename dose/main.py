@@ -4,7 +4,7 @@ from . import pump
 from rclpy.node import Node
 from std_msgs.msg import Float32
 import time
-import datetime
+from datetime import datetime
 
 PIN_IN1 = int(os.getenv('PIN_IN1',22))
 PIN_IN2 = int(os.getenv('PIN_IN2',23))
