@@ -2,7 +2,7 @@ import rclpy
 import os
 from . import pump
 from rclpy.node import Node
-from std_msgs.msg import String
+from std_msgs.msg import Float32
 import time
 import datetime
 
@@ -20,10 +20,10 @@ class Dose(Node):
 
     def __init__(self):
         super().__init__('dose')
-        self.get_logger().info('Startig dose pin in1="%d", in2="%d", en="%d" and target ph of "%d"' % (PIN_IN1, PIN_IN1, PIN_EN, TARGET_PH))
+        self.get_logger().info('Startig dose pin in1="%d", in2="%d", en="%d" and target ph of "%d"' % (PIN_IN1, PIN_IN2, PIN_EN, TARGET_PH))
         self.pump = pump.Pump(PIN_IN1, PIN_IN2, PIN_EN)
         self.subscription = self.create_subscription(
-            String,
+            Float32,
             'ph',
             self.listener_callback,
             10)
