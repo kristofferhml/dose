@@ -38,12 +38,15 @@ class Dose(Node):
         if ph <= TARGET_PH:
             return 
         
-        if self.last_run:
+        try:
             last_run_difference = datetime.now() - self.last_run
             minutes = last_run_difference.total_seconds() / 60  
             self.get_logger().info('Minutes since last run: "%d"' % minutes)
             if minutes < DOSE_MIN_MINUTE_DIFF:
                 return
+        
+        except AttributeError:
+            self.last_run = datetime.now()
             
         self.pump.flow()
         time.sleep(DOSE_INTERVAL)
