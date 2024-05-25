@@ -53,6 +53,7 @@ class Dose(Node):
         time.sleep(DOSE_INTERVAL)
         self.pump.stop()
         self.get_logger().info('Staring. Last run was: "%s"' % self.last_run.strftime('%Y-%m-%d %H:%M:%S'))                
+        self.last_run = datetime.now()
         
 
 def main(args=None):
