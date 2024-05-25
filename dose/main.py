@@ -31,7 +31,7 @@ class Dose(Node):
 
     def listener_callback(self, msg):
 
-        self.get_logger().info('Getting ph value of: "%d"' % msg.data)
+        self.get_logger().info('Getting ph value of: "%.2f"' % msg.data)
         
         ph = msg.data
 
@@ -41,6 +41,7 @@ class Dose(Node):
         if hasattr(Dose, 'last_run'):
             last_run_difference = datetime.now() - self.last_run
             minutes = last_run_difference.total_seconds() / 60  
+            self.get_logger().info('Minutes since last run: "%d"' % minutes)
             if minutes < DOSE_MIN_MINUTE_DIFF:
                 return
             

@@ -14,13 +14,15 @@ class Pump():
         self.p.start(0)
 
         self.current = GPIO.HIGH
-        self.CONTROL_PIN = PIN_IN1
+        self.control_pin = PIN_IN1
         
     def flow(self):
         if self.current == GPIO.LOW:
             return
        
-        GPIO.output(self.CONTROL_PIN, GPIO.LOW)
+        GPIO.output(self.control_pin, GPIO.LOW)   
+        self.p.ChangeDutyCycle(80)
+        
         self.current = GPIO.LOW
 
     def stop(self):
@@ -28,6 +30,7 @@ class Pump():
             return
         
         GPIO.output(self.CONTROL_PIN, GPIO.HIGH)
+        self.p.ChangeDutyCycle(0)
         self.current = GPIO.HIGH
        
     def shutdown(self):
