@@ -46,12 +46,12 @@ class Dose(Node):
                 return
         
         except AttributeError:
+            self.get_logger().info('First run. Setting last_run')
             self.last_run = datetime.now()
             
         self.pump.flow()
         time.sleep(DOSE_INTERVAL)
         self.pump.stop()
-        self.last_run = datetime.now()
         self.get_logger().info('Staring. Last run was: "%s"' % self.last_run.strftime('%Y-%m-%d %H:%M:%S'))                
         
 
