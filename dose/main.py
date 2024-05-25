@@ -38,7 +38,7 @@ class Dose(Node):
         if ph <= TARGET_PH:
             return 
         
-        if hasattr(Dose, 'last_run'):
+        if self.last_run:
             last_run_difference = datetime.now() - self.last_run
             minutes = last_run_difference.total_seconds() / 60  
             self.get_logger().info('Minutes since last run: "%d"' % minutes)
