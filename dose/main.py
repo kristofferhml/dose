@@ -84,7 +84,7 @@ class Dose(Node):
         time.sleep(DOSE_INTERVAL)
 
         try:
-            self.pump.stop()
+            self.pump1.stop()
             self.pump2.stop()
 
         except AttributeError:
