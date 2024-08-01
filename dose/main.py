@@ -13,7 +13,7 @@ PIN_PUMP1_M = int(os.getenv('PIN_PUMP1_M',0))
 PIN_PUMP2_E = int(os.getenv('PIN_PUMP2_IN1',0))
 PIN_PUMP2_M = int(os.getenv('PIN_PUMP2_IN2',0))
 
-TARGET_METRIC = float(os.getenv('TARGET_METRIC', 'ph'))
+TARGET_METRIC = os.getenv('TARGET_METRIC', 'ph')
 TARGET_VALUE = float(os.getenv('TARGET_VALUE', 7.0))
 
 DOSE_INTERVAL = int(os.getenv('DOSE_INTERVAL', 5))
