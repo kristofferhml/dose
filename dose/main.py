@@ -10,8 +10,8 @@ from datetime import datetime
 PIN_PUMP1_E = int(os.getenv('PIN_PUMP1_E',0))
 PIN_PUMP1_M = int(os.getenv('PIN_PUMP1_M',0))
 
-PIN_PUMP2_E = int(os.getenv('PIN_PUMP2_IN1',0))
-PIN_PUMP2_M = int(os.getenv('PIN_PUMP2_IN2',0))
+PIN_PUMP2_E = int(os.getenv('PIN_PUMP2_E',0))
+PIN_PUMP2_M = int(os.getenv('PIN_PUMP2_M',0))
 
 TARGET_METRIC = os.getenv('TARGET_METRIC', 'ph')
 TARGET_VALUE = float(os.getenv('TARGET_VALUE', 7.0))
@@ -27,7 +27,7 @@ class Dose(Node):
 
     def __init__(self):
         super().__init__('dose')
-        self.get_logger().info('Startig dose pin in1="%d", in2="%d", en="%d" and target ph of "%d"' % (PIN_IN1, PIN_IN2, PIN_EN, TARGET_PH))
+        self.get_logger().info('Startig dose pin e="%d", im="%d" taget metric="%s" and target value of "%d"' % (PIN_PUMP1_E, PIN_PUMP1_M, TARGET_METRIC, TARGET_VALUE))
         self.pump1 = pump.Pump(PIN_PUMP1_E, PIN_PUMP1_M)
         if PIN_PUMP2_E > 0:
             self.pump2 = pump.Pump(PIN_PUMP2_E, PIN_PUMP2_M)
