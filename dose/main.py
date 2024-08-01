@@ -15,6 +15,7 @@ PIN_PUMP2_M = int(os.getenv('PIN_PUMP2_M',0))
 
 TARGET_METRIC = os.getenv('TARGET_METRIC', 'ph')
 TARGET_VALUE = float(os.getenv('TARGET_VALUE', 7.0))
+TARGET_DIRECTION = os.getenv('TARGET_DIRECTION', 'down')
 
 DOSE_INTERVAL = int(os.getenv('DOSE_INTERVAL', 5))
 
@@ -59,8 +60,12 @@ class Dose(Node):
 
         value = msg.data
 
-        if value <= TARGET_VALUE:
-            self.get_logger().info('No dose - value less than target')
+        if TARGET_DIRECTION == "down" and value <= TARGET_VALUE:
+            self.get_logger().info('No dose - value already less than target')
+            return 
+        
+        if TARGET_DIRECTION == "up" and value >= TARGET_VALUE:
+            self.get_logger().info('No dose - value already above target')
             return 
         
         try:
