@@ -75,15 +75,21 @@ class Dose(Node):
             self.get_logger().info('First run. Setting last_run')
             self.last_run = datetime.now()
         
-        self.pump1.flow()
-        if self.pump2:
+        try:
+            self.pump1.flow()
             self.pump2.flow()
-
-        time.sleep(DOSE_INTERVAL)
-        self.pump.stop()
-        if self.pump2:
-            self.pump2.stop()
+        except AttributeError:
+            self.get_logger().info('Only one pump attached')
         
+        time.sleep(DOSE_INTERVAL)
+
+        try:
+            self.pump.stop()
+            self.pump2.stop()
+
+        except AttributeError:
+            self.get_logger().info('Only one pump attached')
+
         self.get_logger().info('Dose given. Last run was: "%s"' % self.last_run.strftime('%Y-%m-%d %H:%M:%S'))                
         self.last_run = datetime.now()
         
